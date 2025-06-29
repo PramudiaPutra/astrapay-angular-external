@@ -26,7 +26,6 @@ export class DashboardComponent implements OnInit {
     notes: Note[] = []
 
     constructor(private noteService: NoteService) {
-        console.log("Dashboard constructor call")
     }
 
     delete(id:number): void {
@@ -38,14 +37,11 @@ export class DashboardComponent implements OnInit {
     }
 
     async ngOnInit(): Promise<void> {
-        console.log("Load API Call")
         try {
-
             const data = await lastValueFrom(this.noteService.getAll())
-            console.log("API Response", data);
             this.notes = data;
         } catch (error) {
-            console.log('API Call error:', error)
+            console.log('Fetching note error', error)
         }
     }
 
