@@ -25,8 +25,11 @@ export class NoteService implements INoteService {
     get(id: number): Observable<Note> {
         throw new Error("Method not implemented.");
     }
-    delete(id: number): Observable<null> {
-        throw new Error("Method not implemented.");
+    
+    delete(id: number): Observable<void> {
+        const url = `${this.api}/${id}`;
+
+        return this.http.delete<void>(url);
     }
     
 }

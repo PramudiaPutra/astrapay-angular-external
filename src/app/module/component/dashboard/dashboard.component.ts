@@ -30,7 +30,11 @@ export class DashboardComponent implements OnInit {
     }
 
     delete(id:number): void {
-        
+        this.noteService.delete(id).subscribe(
+            () => {
+                this.notes = this.notes.filter(note => note.id !== id);
+            }
+        )
     }
 
     async ngOnInit(): Promise<void> {
