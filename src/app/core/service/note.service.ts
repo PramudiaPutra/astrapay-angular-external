@@ -3,7 +3,6 @@ import { HttpClient } from "@angular/common/http";
 import { Observable } from "rxjs";
 import { INoteService } from "../interface/note.interface";
 import { Note } from "../model/note.model";
-import { ApiResponse } from "../model/response.model";
 
 @Injectable({providedIn: 'root'})
 export class NoteService implements INoteService {
@@ -13,8 +12,8 @@ export class NoteService implements INoteService {
         console.log("NoteService Constructor Call")
     }
 
-    create(note: Partial<Note>): Observable<ApiResponse<Note>> {
-        return this.http.post<ApiResponse<Note>>(this.api, note)
+    create(note: Partial<Note>): Observable<Note> {
+        return this.http.post<Note>(this.api, note)
     }
     
     getAll(): Observable<Note[]> {
@@ -23,10 +22,10 @@ export class NoteService implements INoteService {
         return this.http.get<Note[]>(this.api)
     }
 
-    get(id: number): Observable<ApiResponse<Note>> {
+    get(id: number): Observable<Note> {
         throw new Error("Method not implemented.");
     }
-    delete(id: number): Observable<ApiResponse<null>> {
+    delete(id: number): Observable<null> {
         throw new Error("Method not implemented.");
     }
     
