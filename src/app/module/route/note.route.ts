@@ -3,8 +3,6 @@ import { DashboardComponent } from "../component/dashboard/dashboard.component";
 import { NoteFormComponent } from "../component/note-form/note-form.component";
 
 export const noteRoutes: Routes = [
-    // {path: '', component: DashboardComponent},
-    // {path: 'new', component: NoteFormComponent}
 
     {
         path: '',
@@ -14,5 +12,9 @@ export const noteRoutes: Routes = [
     {
         path: 'dashboard',
         component: DashboardComponent
+    },
+    {
+        path: 'new', 
+        component: NoteFormComponent
     },
 ]

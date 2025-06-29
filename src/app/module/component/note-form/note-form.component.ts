@@ -1,7 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from "@angular/forms";
 import { NoteService } from "../../../core/service/note.service";
-import { Router } from "@angular/router";
+import { Router, RouterModule } from "@angular/router";
 import { CommonModule } from "@angular/common";
 import { MatFormFieldModule } from "@angular/material/form-field";
 import { MatInputModule } from "@angular/material/input";
@@ -17,7 +17,8 @@ import { MatToolbar } from "@angular/material/toolbar";
         MatFormFieldModule,
         MatInputModule,
         MatButtonModule,
-        MatToolbar
+        MatToolbar,
+        RouterModule
     ],
     standalone: true
 })
@@ -32,14 +33,15 @@ export class NoteFormComponent implements OnInit {
 
     ngOnInit(): void {
         this.form = this.fb.group({
-            Title: ['', Validators.required]
+            title: ['', Validators.required],
+            description: []
         })
     }
 
     submit(): void {
         if(this.form.valid) {
             this.noteService.create(this.form.value).subscribe(() => {
-                this.router.navigate(['/dashboard'])
+                this.router.navigate(['/note/dashboard'])
             })
         }
     }

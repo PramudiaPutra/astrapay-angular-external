@@ -9,14 +9,18 @@ import { ApiResponse } from "../model/response.model";
 export class NoteService implements INoteService {
     private readonly api = 'http://localhost:8000/note';
 
-    constructor(private http: HttpClient) {}
+    constructor(private http: HttpClient) {
+        console.log("NoteService Constructor Call")
+    }
 
     create(note: Partial<Note>): Observable<ApiResponse<Note>> {
         return this.http.post<ApiResponse<Note>>(this.api, note)
     }
     
-    getAll(): Observable<ApiResponse<Note[]>> {
-        return this.http.get<ApiResponse<Note[]>>(this.api)
+    getAll(): Observable<Note[]> {
+
+        console.log("getAll call")
+        return this.http.get<Note[]>(this.api)
     }
 
     get(id: number): Observable<ApiResponse<Note>> {
